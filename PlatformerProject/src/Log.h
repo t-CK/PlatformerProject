@@ -6,17 +6,18 @@
 #include <spdlog/spdlog.h>
 
 
-
-class Log
+namespace Game
 {
-public:
-	static void Init();
+	class Log
+	{
+	public:
+		static void Init();
 
-	static std::shared_ptr<spdlog::logger>& GetLogger() { return s_Logger; }
-private:
-	static std::shared_ptr<spdlog::logger> s_Logger;
-};
-
+		static std::shared_ptr<spdlog::logger>& GetLogger() { return s_Logger; }
+	private:
+		static std::shared_ptr<spdlog::logger> s_Logger;
+	};
+}
 
 // Makros are left as ONYX_:: to indicate, that they have been reused
 #if _DEBUG

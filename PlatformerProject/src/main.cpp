@@ -2,7 +2,7 @@
 
 int main()
 {
-	Log::Init();
+	Game::Log::Init();
 
 	return 0;
 }

@@ -4,13 +4,15 @@
 // Vendor
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-
-std::shared_ptr<spdlog::logger> Log::s_Logger;
-
-void Log::Init()
+namespace Game
 {
-	spdlog::set_pattern("%^[%T] %n: %v%$");
+	std::shared_ptr<spdlog::logger> Log::s_Logger;
 
-	s_Logger = spdlog::stdout_color_mt("APP");
-	s_Logger->set_level(spdlog::level::trace);
+	void Log::Init()
+	{
+		spdlog::set_pattern("%^[%T] %n: %v%$");
+
+		s_Logger = spdlog::stdout_color_mt("APP");
+		s_Logger->set_level(spdlog::level::trace);
+	}
 }
