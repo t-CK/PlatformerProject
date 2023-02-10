@@ -5,6 +5,12 @@
 
 namespace Game
 {
+	// glfw ErrorCallback
+	static void glfwErrorCallback(int errorCode, const char* errorMessage)
+	{
+		ONYX_ERROR("glfw Error [{0}]: {1}", errorCode, errorMessage);
+	}
+
 	WindowGL::WindowGL(const WindowProps& props)
 	{
 		m_Props = props;
@@ -12,6 +18,7 @@ namespace Game
 
 	bool WindowGL::Init()
 	{
+
 		int result = glfwInit();
 
 		if (!result)
@@ -20,6 +27,9 @@ namespace Game
 			return false;
 		}
 		ONYX_INFO("Initialized glfw");
+
+		// Set glfw ErrorCallback
+		glfwSetErrorCallback(glfwErrorCallback);
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
