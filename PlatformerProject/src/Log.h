@@ -22,11 +22,11 @@ namespace Game
 // Makros are left as ONYX_:: to indicate, that they have been reused
 #if _DEBUG
 							   		   
-#define ONYX_FATAL(...)        Log::GetLogger()->critical(__VA_ARGS__)
-#define ONYX_ERROR(...)        Log::GetLogger()->error(__VA_ARGS__)
-#define ONYX_WARNING(...)      Log::GetLogger()->warn(__VA_ARGS__)
-#define ONYX_INFO(...)         Log::GetLogger()->info(__VA_ARGS__)
-#define ONYX_TRACE(...)        Log::GetLogger()->trace(__VA_ARGS__)
+#define ONYX_FATAL(...)        Game::Log::GetLogger()->critical(__VA_ARGS__)
+#define ONYX_ERROR(...)        Game::Log::GetLogger()->error(__VA_ARGS__)
+#define ONYX_WARNING(...)      Game::Log::GetLogger()->warn(__VA_ARGS__)
+#define ONYX_INFO(...)         Game::Log::GetLogger()->info(__VA_ARGS__)
+#define ONYX_TRACE(...)        Game::Log::GetLogger()->trace(__VA_ARGS__)
 
 #else
 

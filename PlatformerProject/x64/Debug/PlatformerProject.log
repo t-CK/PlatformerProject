@@ -1,2 +1,4 @@
-﻿  main.cpp
+﻿  Application.cpp
+  WindowGL.cpp
+  Generating Code...
   PlatformerProject.vcxproj -> E:\VisualStudio\Projects\PlatformerProject\x64\Debug\PlatformerProject.exe
