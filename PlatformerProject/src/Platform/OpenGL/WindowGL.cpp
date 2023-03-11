@@ -3,6 +3,24 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+
+const char* VERTEX =
+"#version 330 core\n"
+"layout (location = 0) in vec3 aPos;\n"
+"void main()\n"
+"{\n"
+"gl_Position = vec4(aPos, 1.0);\n"
+"}\0";
+
+const char* FRAGMENT =
+"#version 330 core\n"
+"out vec4 fragColor;\n"
+"void main()\n"
+"{\n"
+"fragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
+"}\0";
+
 namespace Game
 {
 	// glfw ErrorCallback
@@ -62,8 +80,86 @@ namespace Game
 
 	void WindowGL::Draw()
 	{
-		glfwSwapBuffers(m_Window);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		float vertecies[] = {
+			// position		 
+			0.0f,  0.5f, 0.0f, // Top
+			0.5f, -0.5f, 0.0f, // right
+		   -0.5f, -0.5f, 0.0f  // left
+		};
+
+		unsigned int indecies[] = {
+			0, 1, 2
+		};
+		
+
+		
+
+		
+
+
+
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+
+		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+		glShaderSource(vertexShader, 1, &VERTEX, NULL);
+		glCompileShader(vertexShader);
+
+		int  success;
+		char infoLog[512];
+		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+
+		if (!success)
+		{
+			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+			ONYX_ERROR("ERROR::SHADER::VERTEX::COMPILATION FAILED:\n\t{0}", infoLog);
+		}
+		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+		glShaderSource(fragmentShader, 1, &FRAGMENT, NULL);
+		glCompileShader(fragmentShader);
+
+		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+
+		if (!success)
+		{
+			glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+			ONYX_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION FAILED:\n\t{0}", infoLog);
+		}
+
+		unsigned int program = glCreateProgram();
+		glAttachShader(program, vertexShader);
+		glAttachShader(program, fragmentShader);
+		glGetProgramiv(program, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(vertexShader, 512, NULL, infoLog);
+			ONYX_ERROR("ERROR::PROGRAM::COMPILATION:\n\t{0}", infoLog);
+		}
+
+		glLinkProgram(program);
+		glValidateProgram(program);
+		glGetProgramiv(program, GL_LINK_STATUS, &success);
+		if (!success) {
+			glGetProgramInfoLog(program, 512, NULL, infoLog);
+			ONYX_ERROR("ERROR::PROGRAM::LINKING:\n\t{0}", infoLog);
+		}
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+		glEnableVertexAttribArray(0);
+
+		
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+		glEnableVertexAttribArray(0);
+
+		glUseProgram(program);
+
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glfwSwapBuffers(m_Window);
 	}
 
 	void WindowGL::Update()
