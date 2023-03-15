@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <iostream>
+//#include <iostream>
 
 const char* VERTEX =
 "#version 330 core\n"
@@ -18,7 +18,7 @@ const char* FRAGMENT =
 "out vec4 fragColor;\n"
 "void main()\n"
 "{\n"
-"fragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
+"fragColor = vec4(0.0, 1.0, 0.0, 1.0);\n"
 "}\0";
 
 namespace Game
@@ -93,12 +93,19 @@ namespace Game
 			0, 1, 2
 		};
 		
+		unsigned int VAO, VBO, EBO;
+		glGenVertexArrays(1, &VAO);
+		glBindVertexArray(VAO);
 
-		
+		glGenBuffers(1, &VBO);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO); 
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
 
-		
+		glGenBuffers(1, &EBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
 
-
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);

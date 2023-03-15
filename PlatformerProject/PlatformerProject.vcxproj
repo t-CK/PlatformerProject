@@ -144,18 +144,12 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math\Vector.cpp" />
     <ClCompile Include="src\Platform\OpenGL\glad.c" />
-    <ClCompile Include="src\Platform\OpenGL\GL_EBO.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\GL_VAO.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\GL_VBO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\WindowGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Components\GameComponent.h" />
     <ClInclude Include="src\Components\TagComponent.h" />
-    <ClInclude Include="src\Graphics\IndexBuffer.h" />
-    <ClInclude Include="src\Graphics\VAO.h" />
-    <ClInclude Include="src\Graphics\VBO.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\Math\Vector.h" />
     <ClInclude Include="src\Platform\OpenGL\GL_EBO.h" />
