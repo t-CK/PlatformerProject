@@ -2,6 +2,8 @@
 .vs/
 bin/
 bin-int/
+x64/
+PlatformerProject/x64/
 
 # files
 *.ini
