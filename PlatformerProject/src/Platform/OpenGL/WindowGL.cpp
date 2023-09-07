@@ -107,7 +107,7 @@ namespace Game
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
 		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -163,8 +163,8 @@ namespace Game
 
 		glUseProgram(program);
 
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(m_Window);
 	}
