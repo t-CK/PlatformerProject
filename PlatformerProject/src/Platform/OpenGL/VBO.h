@@ -6,12 +6,12 @@ namespace Renderer
 	{
 	public:
 		VBO();
-		void AddBuffer(void* data);
+		void AddBuffer(const void* data);
 		void Bind();
 		void UnBind();
 		~VBO();
 
 	private:
-		uint32_t m_RendererID;
+		unsigned int m_RendererID;
 	};
 }
