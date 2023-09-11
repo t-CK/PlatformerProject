@@ -1,13 +1,13 @@
 
-
 namespace Renderer
 {
+	class VertexBufferLayout;
+	
 	class EBO
 	{
 	public:
-		EBO();
+		EBO(const unsigned int* data, unsigned int count);
 
-		void AddBuffer(const void* data);
 		void Bind();
 		void UnBind();
 

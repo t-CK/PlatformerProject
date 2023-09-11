@@ -1,20 +1,16 @@
 #include "EBO.h"
+#include "VertexBufferLayout.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Renderer
 {
-	EBO::EBO()
+	EBO::EBO(const unsigned int* data, unsigned int count)
 	{
 		glGenBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
-	}
-
-	void EBO::AddBuffer(const void* data)
-	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(unsigned int), data, GL_STATIC_DRAW);
 	}
 
 	void EBO::Bind()
