@@ -142,7 +142,10 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\EBO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\glad.c" />
+    <ClCompile Include="src\Platform\OpenGL\VAO.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\VBO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\WindowGL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,8 +153,14 @@
     <ClInclude Include="src\Components\GameComponent.h" />
     <ClInclude Include="src\Components\TagComponent.h" />
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Platform\OpenGL\EBO.h" />
+    <ClInclude Include="src\Platform\OpenGL\VBO.h" />
+    <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h" />
     <ClInclude Include="src\Platform\OpenGL\WindowGL.h" />
     <ClInclude Include="src\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Platform\OpenGL\VAO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

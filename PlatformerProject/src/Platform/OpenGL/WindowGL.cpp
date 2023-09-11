@@ -1,4 +1,7 @@
 #include "WindowGL.h"
+#include "VAO.h"
+#include "VBO.h"
+#include "EBO.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -92,22 +95,25 @@ namespace Game
 		unsigned int indecies[] = {
 			0, 1, 2
 		};
+
+//		glBindVertexArray(VAO);
+		Renderer::VAO vao;
 		
-		unsigned int VAO, VBO, EBO;
-		glGenVertexArrays(1, &VAO);
-		glBindVertexArray(VAO);
+//		glGenBuffers(1, &VBO);
+//		glBindBuffer(GL_ARRAY_BUFFER, VBO); 
+//		glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
 
-		glGenBuffers(1, &VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, VBO); 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
+		Renderer::VBO vbo(vertecies, sizeof(vertecies));
 
-		glGenBuffers(1, &EBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
+//		glGenBuffers(1, &EBO);
+//		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+//		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecies), indecies, GL_STATIC_DRAW);
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		Renderer::EBO ebo(indecies, 3);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+//		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+
+//		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
 		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -156,14 +162,12 @@ namespace Game
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 		glEnableVertexAttribArray(0);
 
-		
-
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 		glEnableVertexAttribArray(0);
 
 		glUseProgram(program);
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		ebo.Bind();
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(m_Window);

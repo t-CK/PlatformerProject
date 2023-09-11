@@ -30,7 +30,13 @@
     <ClCompile Include="src\Platform\OpenGL\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Math\Vector.cpp">
+    <ClCompile Include="src\Platform\OpenGL\VAO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\VBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\EBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,17 +59,17 @@
     <ClInclude Include="src\Components\TagComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Math\Vector.h">
+    <ClInclude Include="src\Platform\OpenGL\VBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\GL_VAO.h">
+    <ClInclude Include="src\Platform\OpenGL\EBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\GL_VBO.h">
+    <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\GL_EBO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Platform\OpenGL\VAO.h" />
   </ItemGroup>
 </Project>
