@@ -9,7 +9,7 @@ namespace Renderer
 		glGenBuffers(1, &m_RendererID);
 	}
 
-	void VBO::AddBuffer(void* data)
+	void VBO::AddBuffer(const void* data)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
@@ -23,5 +23,10 @@ namespace Renderer
 	void VBO::UnBind()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	VBO::~VBO()
+	{
+		glDeleteBuffers(1, &m_RendererID);
 	}
 }
