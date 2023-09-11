@@ -5,8 +5,7 @@ namespace Renderer
 	class VBO
 	{
 	public:
-		VBO();
-		void AddBuffer(const void* data);
+		VBO(const void* data, unsigned int size);
 		void Bind();
 		void UnBind();
 		~VBO();

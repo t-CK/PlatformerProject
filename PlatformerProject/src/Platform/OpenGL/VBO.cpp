@@ -4,15 +4,11 @@
 
 namespace Renderer
 {
-	VBO::VBO()
+	VBO::VBO(const void* data, unsigned int size)
 	{
 		glGenBuffers(1, &m_RendererID);
-	}
-
-	void VBO::AddBuffer(const void* data)
-	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 
 	void VBO::Bind()
