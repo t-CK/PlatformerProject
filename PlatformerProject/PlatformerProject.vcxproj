@@ -144,6 +144,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Platform\OpenGL\EBO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\glad.c" />
+    <ClCompile Include="src\Platform\OpenGL\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\VAO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\VBO.cpp" />
     <ClCompile Include="src\Platform\OpenGL\WindowGL.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="src\Components\TagComponent.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\Platform\OpenGL\EBO.h" />
+    <ClInclude Include="src\Platform\OpenGL\Shader.h" />
     <ClInclude Include="src\Platform\OpenGL\VBO.h" />
     <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h" />
     <ClInclude Include="src\Platform\OpenGL\WindowGL.h" />
