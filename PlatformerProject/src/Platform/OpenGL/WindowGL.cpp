@@ -17,12 +17,12 @@ namespace Game
 
 	WindowGL::WindowGL(const WindowProps& props)
 	{
+		// Set the window properties
 		m_Props = props;
 	}
 
 	bool WindowGL::Init()
 	{
-
 		int result = glfwInit();
 
 		if (!result)
@@ -35,6 +35,8 @@ namespace Game
 		// Set glfw ErrorCallback
 		glfwSetErrorCallback(glfwErrorCallback);
 
+		// Set glfw window hínts
+		// At moment we are using glfw core profile, version 3.3
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -49,8 +51,10 @@ namespace Game
 		}
 		ONYX_INFO("Created glfw window");
 
+		// Set the GL context to just created window
 		glfwMakeContextCurrent(m_Window);
 
+		// Load glad -openGL helper library
 		result = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		if (result == GLFW_FALSE)
 		{
@@ -61,13 +65,15 @@ namespace Game
 		}
 		ONYX_INFO("Initialized glad");
 
-		glClearColor(1.f, 0.5f, 0.5f, 0.f);
+		// Set the color to clear window with
+		glClearColor(0.2f, 0.2f, 0.2f, 0.2f);
 
 		return true;
 	}
 
 	void WindowGL::Draw()
 	{
+		// Clear window with color
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		float vertecies[] = {
@@ -82,13 +88,8 @@ namespace Game
 		};
 
 		Renderer::VAO vao;
-		
 		Renderer::VBO vbo(vertecies, sizeof(vertecies));
-
 		Renderer::EBO ebo(indecies, 3);
-
-		glEnableVertexAttribArray(0);
-
 
 		Renderer::Shader shader("assets/vertexShader.glsl", "assets/fragmentShader.glsl");
 

@@ -15,6 +15,7 @@ namespace Game
 		virtual void Draw() override;
 		virtual void Update() override;
 
+		// Set v-sync on/off
 		virtual void SetVSync(bool vSync) override;
 
 		virtual void* GetNativeWindow() override { return (void*)m_Window; }
